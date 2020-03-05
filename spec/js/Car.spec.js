@@ -3,19 +3,32 @@ describe('Car should behave like a car:', () => {
     
     beforeEach(() => {
         underTest = new Car();
-    })
+    });
 
-    describe('Car should accelerate:', () => {
-        describe('When gas goes smash, car goes faster by 10 mph!', () => {   
+    describe('Car can save state, and return it to us:', () => {
+        it('Should return initial speed of 0', () =>{
+            expect(underTest.getSpeed()).toBe(0);
         });
 
-        describe('Car engine health goes down if speed is over 60', () => { 
+        it('Should return initial engine health as 100', () => {
+            expect(underTest.getEngineHealth()).toBe(100);
         });
+    });
 
+    describe('Car can accelerate:', () => {
+        it('Should go faster by 10 mph!', () => {
+            underTest.accelerate();
+            expect(underTest.getSpeed()).toBe(10);
+        });
     });
 
     describe('Car should slow down:', () => {
-        describe('When brake is pressed, car speed slows by 10 mph')
+        it('Should slow down by 10 mph', () => {
+            underTest.accelerate();
+            underTest.accelerate();
+            underTest.brake();
+            expect(underTest.getSpeed()).toBe(10);
+        })
     })
     
 });
