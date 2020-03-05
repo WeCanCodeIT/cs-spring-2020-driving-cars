@@ -1,11 +1,19 @@
 describe('app.js manipulates the DOM to reflect the status of a Car object.', () => {
-    
+    let testCar;
+    let testSpeedometer;
+    let testAccelerator;
+
     beforeEach(() => {
+        testCar = new Car();
+        testSpeedometer = document.createElement('div');
+        testAccelerator = document.createElement('button');
+        makeButtonIntoAccelerator(testAccelerator, testSpeedometer, testCar);
         
     });
-    describe('showSpeed() - As the car accelerates, the innerText of the passed element reflects the cars speed.', () => {
+    describe('updateSpeedometer() - As the car accelerates, the innerText of the passed element reflects the cars speed.', () => {
         it('Without accelerating the car speed should be 0.', () => {  
-
+            updateSpeedometer(testSpeedometer, testCar);
+            expect(testSpeedometer.innerText).toBe('0');
         });
 
         it('After accelerating the car speed should be 10.', () => {  
@@ -13,15 +21,16 @@ describe('app.js manipulates the DOM to reflect the status of a Car object.', ()
         });
     });
 
-    describe('showSpeed() - As the car brakes, the innerText of the passed element reflects the cars speed.', () => {
+    describe('updateSpeedometer() - As the car brakes, the innerText of the passed element reflects the cars speed.', () => {
         it('Braking to 10 should show a speed of 10.', () => {
             
         });
     });
 
-    describe('makeAccelerator() - Creates an accelerator button out of the passed button, calls accelerate() one time when clicked.', () => {
+    describe('makeButtonIntoAccelerator() - Creates an accelerator button out of the passed button, calls accelerate() one time when clicked.', () => {
         it('Clicking once on the new accelerator will increase the car\'s speed.', () => {
-            
+            testAccelerator.click();
+            expect(testCar.getSpeed()).toBe(10);
         });
 
         it('Clicking once on the accelerator will increase the speedometer elements innerText to \'10\'.', () => {
