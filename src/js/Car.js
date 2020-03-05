@@ -5,14 +5,17 @@ class Car {
     }
 
     accelerate() {   
+        this._speed += 10;
     }
 
-    brake() {   
+    brake() { 
+        this._speed -= 10;  
     }
 
     getEngineHealth() { 
     }
 
     getSpeed() {   
+        return this._speed;
     }
 }
