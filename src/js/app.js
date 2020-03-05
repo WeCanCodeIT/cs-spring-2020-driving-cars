@@ -8,3 +8,10 @@ const makeAcceleratorButton = (acceleratorElement, speedometerElement, carObject
         updateSpeedometer(speedometerElement, carObject);
     })
 }
+
+const acceleratorElement = document.querySelector('.floorboard__accelerator');
+const speedometerElement = document.querySelector('.dashboard__speedometer');
+const appCar = new Car();
+
+makeAcceleratorButton(acceleratorElement, speedometerElement, appCar);
+updateSpeedometer(speedometerElement, appCar);
